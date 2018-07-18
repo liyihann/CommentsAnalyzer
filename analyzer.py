@@ -15,6 +15,7 @@ def get_html(url):
     soup=BeautifulSoup(html,"html.parser")
     content=soup.find("div",id="content")
     return content
+
 #获取评论
 def get_all(content):
     content=content.find_all("div", class_="item")
@@ -26,6 +27,7 @@ def get_all(content):
             comment=''
         comments=comments+comment
     return comments
+
 #获取页数
 def get_page(url):
     html=request.urlopen(url)
@@ -33,10 +35,10 @@ def get_page(url):
     page=soup.find("span",class_="thispage").get("data-total-page")
     return int(page)
 
-#main方法
-url='https://movie.douban.com/people/username/collect?start='#url中username部分填入用户名
+username = input("Please enter username(e.g.\'ahbei\'):")
+url='https://movie.douban.com/people/'+username+'/collect?start='#url中username部分填入用户名
 page=get_page(url)#获取总页数
-#print(page)
+print("Total page:"+str(page))
 all_comment=''
 for i in range(page):
     url1=url+str((i-1)*15)
