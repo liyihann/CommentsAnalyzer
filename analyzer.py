@@ -35,10 +35,11 @@ def get_page(url):
     page=soup.find("span",class_="thispage").get("data-total-page")
     return int(page)
 
+
 username = input("Please enter username(e.g.\'ahbei\'):")
 url='https://movie.douban.com/people/'+username+'/collect?start='#url中username部分填入用户名
 page=get_page(url)#获取总页数
-print("Total page:"+str(page))
+#print(page)
 all_comment=''
 for i in range(page):
     url1=url+str((i-1)*15)
