@@ -51,7 +51,7 @@ for i in range(page):
 pattern=re.compile(r'[\u4e00-\u9fff]+')
 filtered=re.findall(pattern,all_comment)
 cleaned="".join(filtered)
-#print(cleaned)
+# print(cleaned)
 
 #使用jieba分词
 segment=jieba.lcut(cleaned)
